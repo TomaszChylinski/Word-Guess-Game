@@ -12,6 +12,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+    crossorigin="anonymous"
+  ></script>
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
     <title>Hang Man</title>
   </head>
   <body>
@@ -22,12 +28,27 @@
           <h4>Press any key to get started</h4>
 
           Number of Guess Remaining: Wins: Loses:
+          <br>
+          <p> Your word <span id="userInput"> Hellow </p>
         </div>
         <div class="col-lg-4"></div>
       </div>
     </div>
 
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <script>
+    
+    //keyUp function 
+        //document.getElementById("userInput");
+    var userText = document.getElementById("userInput");
+    document.onkeyup  = function(event){
+        userText.textContent = event.key;
+        console.log(userText);
+    };
+
+   
+    
+    </script>
+
   </body>
 </html>
 
@@ -36,7 +57,7 @@
     What needs to happen 
      -------------------
 
-     1. need key listener to make pick up my clicks
+     1. need keyUp listener to make pick up my clicks
      2. place holder for my words
      3. need to generate a random word
      4. on keyUp i need to check if my letter matches the letter i need
