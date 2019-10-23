@@ -12,14 +12,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-    crossorigin="anonymous"
-  ></script>
-  <script type="text/javascript" src="assets/javascript/game.js"></script>
     <title>Hang Man</title>
   </head>
+
   <body>
     <div class="container">
       <div class="row">
@@ -34,21 +29,8 @@
         <div class="col-lg-4"></div>
       </div>
     </div>
-
-    <script>
-    
-    //keyUp function 
-        //document.getElementById("userInput");
-    var userText = document.getElementById("userInput");
-    document.onkeyup  = function(event){
-        userText.textContent = event.key;
-        console.log(userText);
-    };
-
-   
-    
-    </script>
-
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <script src="jquery-3.4.1.min.js"></script>
   </body>
 </html>
 
