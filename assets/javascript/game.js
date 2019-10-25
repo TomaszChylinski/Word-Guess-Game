@@ -1,11 +1,18 @@
 //onKeyUp function to start the game
 
 var userText = $("userInput");
+var keysPressed = [];
 onkeyup = function(keyClicked) {
   userText = keyClicked.key;
-  console.log(userText);
-  return userText;
+  keysPressed.push(userText);
+  //keysPressed.userText = "";
+  console.log('buttonClicked ' + userText);
+  console.log('button Clicked arrary ' + keysPressed);
+
 };
+
+
+
 
 //arrary of letters user has to chose from
 var letters = [
