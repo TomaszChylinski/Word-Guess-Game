@@ -5,7 +5,7 @@ var losses;
 var rand;
 var cpuWordChoice;
 var answerArrary = [];
-var wrongLetters;
+var wrongLetter = [];
 
 // an arrary of words for the cpu to chose from
 var cpuGuestWords = [
@@ -42,8 +42,18 @@ function startGame() {
 document.onkeyup = function(event) {
   userInput = event.key;
 
+  //checking if letter exisits in cpuWordChoice word
   if (cpuWordChoice.indexOf(userInput) > -1) {
-    console.log('what is tthis ' + cpuWordChoice.indexOf(userInput));
+    for (var i = 0; i < cpuWordChoice.length; i++) {
+      if(cpuWordChoice[i] === userInput){
+        answerArrary[i] = userInput;
+        console.log('testing if underscore gets replaced ' + answerArrary)
+      }
+    }
+  } else {
+    wrongLetter.push(userInput);
+    //document.getElementById("wrongLetters").textContent = wrongLetter;
+    remainingGuesses--;
   }
 };
 
