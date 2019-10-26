@@ -45,6 +45,7 @@ document.onkeyup = function(event) {
   //checking if letter exisits in cpuWordChoice word
   if (cpuWordChoice.indexOf(userInput) > -1) {
     for (var i = 0; i < cpuWordChoice.length; i++) {
+      //if true than replace underscore with userInput
       if(cpuWordChoice[i] === userInput){
         answerArrary[i] = userInput;
         console.log('testing if underscore gets replaced ' + answerArrary)

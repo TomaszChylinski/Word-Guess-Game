@@ -1,13 +1,17 @@
+body {
+  background-color: purple;
+}
 
-  .letter {
-    width: 30px;
-    height: 30px;
-    border-style: solid;
-    padding: 2px;
-    float: left;
-    margin: 2px;
-  }
+.container {
+  background-image: url("../images/eights-theme.jpg");
 
-  .letter-button-color {
-    color: darkcyan;
-  }
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-weight: bold;
+}
