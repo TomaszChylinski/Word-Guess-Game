@@ -1,3 +1,15 @@
+var remainingGuesses = 10;
+var wins = 0;
+var loses = 0;
+
+var userText = document.getElementById("lettersUsed");
+
+// Next, we give JavaScript a function to execute when onkeyup event fires.
+document.onkeyup = function(event) {
+  userText.textContent = event.key;
+  console.log(userText.textContent);
+};
+
 //aplphabet arrary
 var alphabet = [
   "a",
@@ -41,33 +53,19 @@ var cpuGuestWords = [
   "interstellar"
 ];
 
-
-//pick random words from cpuGuestWords
-var cpuWordChoice =
-  cpuGuestWords[Math.floor(Math.random() * cpuGuestWords.length)];
-console.log(cpuWordChoice);
-
-
-//answer arrary, shows how many letters in cpuWordChoice
-var answerArrary = [];
-for (var i = 0; i < cpuWordChoice.length; i++){
-  answerArrary[i] = "_";
-}
+function startGame() {
+  //pick random word
+  var cpuWordChoice =
+    cpuGuestWords[Math.floor(Math.random() * cpuGuestWords.length)];
 
 
+    var answerArrary = [];
+    for (var i = 0; i < cpuWordChoice.length; i++) {
+      answerArrary.push(' __ ');
+    }
 
+    document.getElementById("trysLeft").textContent = answerArrary
 
+  }
 
-
-
-var lettersUsed = document.getElementById("userInput");
-
-document.onkeyup = function(event) {
-  lettersUsed.textContent = event.key;
-  console.log(lettersUsed);
-};
-
-
-
-
-
+startGame();
