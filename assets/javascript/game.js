@@ -59,13 +59,13 @@ function startGame() {
     cpuGuestWords[Math.floor(Math.random() * cpuGuestWords.length)];
 
 
-    var answerArrary = [];
-    for (var i = 0; i < cpuWordChoice.length; i++) {
-      answerArrary.push(' __ ');
-    }
-
-    document.getElementById("trysLeft").textContent = answerArrary
-
+  //create underscores for placeholders 
+  var answerArrary = [];
+  for (var i = 0; i < cpuWordChoice.length; i++) {
+    answerArrary.push(" __ ");
   }
+
+  document.getElementById("trysLeft").textContent = answerArrary.join(" ");
+}
 
 startGame();
