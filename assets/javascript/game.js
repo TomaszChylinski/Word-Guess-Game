@@ -1,7 +1,7 @@
 //declaring variables
 var remainingGuesses = 10;
-var wins;
-var losses;
+var wins = 0;
+var losses = 0;
 var rand;
 var cpuWordChoice;
 var answerArrary = [];
@@ -21,9 +21,11 @@ var cpuGuestWords = [
 ];
 
 function startGame() {
-  //print out remainig guesses
 
+//printing my variables onto the screen
   document.getElementById("remainingGuesses").textContent = remainingGuesses;
+  document.getElementById("lost").textContent = losses;
+  document.getElementById("win").textContent = wins;
 
   //pick random word
   cpuWordChoice =
@@ -35,26 +37,45 @@ function startGame() {
     answerArrary.push(" __ ");
   }
 
-  document.getElementById("trysLeft").textContent = answerArrary.join(" ");
+  document.getElementById("currentWord").textContent = answerArrary.join(" ");
 }
 
-//store key event upon onkeyup
+//decide if user has won or lost
+function winLose() {
+  if (winCounter === cpuWordChoice.length) {
+    alert("Winner");
+  }
+}
+
+function loseGame() {
+  if (remainingGuesses < 1) {
+    document.getElementById("lost").textContent = losses++;
+    alert("Sorry You Lost");
+  }
+}
+
+//user guesses
 document.onkeyup = function(event) {
   userInput = event.key;
-
   //checking if letter exisits in cpuWordChoice word
   if (cpuWordChoice.indexOf(userInput) > -1) {
     for (var i = 0; i < cpuWordChoice.length; i++) {
       //if true than replace underscore with userInput
-      if(cpuWordChoice[i] === userInput){
+      if (cpuWordChoice[i] === userInput) {
         answerArrary[i] = userInput;
-        console.log('testing if underscore gets replaced ' + answerArrary)
+        document.getElementById("currentWord").textContent = answerArrary;
+        console.log("testing if underscore gets replaced " + answerArrary);
+        winLose();
       }
     }
   } else {
     wrongLetter.push(userInput);
-    //document.getElementById("wrongLetters").textContent = wrongLetter;
-    remainingGuesses--;
+
+    document.getElementById(
+      "remainingGuesses"
+    ).textContent = remainingGuesses--;
+    console.log(wrongLetter);
+    document.getElementById("lettersUsed").textContent = wrongLetter;
   }
 };
 
