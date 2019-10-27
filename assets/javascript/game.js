@@ -18,7 +18,7 @@ var cpuGuestWords = [
   "finance",
   "purple",
   "equivalent",
-  "innter",
+  "inner",
   "space",
   "moon",
   "mars",
@@ -51,7 +51,6 @@ function startGame() {
     } else if (remainingGuesses <= 0) {
       document.getElementById("lost").textContent = losses++;
       alert("Sorry You Lost");
-      startGame();
     }
   }
 
@@ -77,7 +76,7 @@ function startGame() {
         "remainingGuesses"
       ).textContent = remainingGuesses;
       winLose();
-      console.log(wrongLetter);
+      //console.log(wrongLetter);
       document.getElementById("lettersUsed").textContent = wrongLetter;
     }
   };
