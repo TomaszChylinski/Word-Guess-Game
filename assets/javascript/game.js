@@ -29,8 +29,8 @@ var cpuGuestWords = [
 function startGame() {
   //printing my variables onto the screen
   document.getElementById("remainingGuesses").textContent = remainingGuesses;
-  document.getElementById("lost").textContent = losses++;
-  document.getElementById("win").textContent = wins++;
+  document.getElementById("lost").textContent = losses;
+  document.getElementById("win").textContent = wins;
 
   //pick random word
   cpuWordChoice =
@@ -46,12 +46,13 @@ function startGame() {
   //alert if user won or lost
   function winLose() {
     if (winCounter === cpuWordChoice.length) {
-      document.getElementById("win").textContent = wins++;
       alert("Winner");
+      wins++
       startGame();
 
     } else if (remainingGuesses === 0) {
       alert("Sorry You Lost");
+      losses++
       startGame()
     }
   }
