@@ -29,8 +29,8 @@ var cpuGuestWords = [
 function startGame() {
   //printing my variables onto the screen
   document.getElementById("remainingGuesses").textContent = remainingGuesses;
-  document.getElementById("lost").textContent = losses;
-  document.getElementById("win").textContent = wins;
+  document.getElementById("lost").textContent = losses++;
+  document.getElementById("win").textContent = wins++;
 
   //pick random word
   cpuWordChoice =
@@ -48,9 +48,11 @@ function startGame() {
     if (winCounter === cpuWordChoice.length) {
       document.getElementById("win").textContent = wins++;
       alert("Winner");
-    } else if (remainingGuesses <= 0) {
-      document.getElementById("lost").textContent = losses++;
+      startGame();
+
+    } else if (remainingGuesses === 0) {
       alert("Sorry You Lost");
+      startGame()
     }
   }
 
@@ -72,10 +74,8 @@ function startGame() {
     } else {
       wrongLetter.push(userInput);
       remainingGuesses--;
-      document.getElementById(
-        "remainingGuesses"
-      ).textContent = remainingGuesses;
       winLose();
+      document.getElementById("remainingGuesses").textContent = remainingGuesses;
       //console.log(wrongLetter);
       document.getElementById("lettersUsed").textContent = wrongLetter;
     }
