@@ -1,5 +1,5 @@
 //declaring variables
-var remainingGuesses = 10;
+
 var rand;
 var cpuWordChoice;
 var answerArrary = [];
@@ -7,6 +7,7 @@ var wrongLetter = [];
 var winCounter = 0;
 var losses = 0;
 var wins = 0;
+var remainingGuesses = 10;
 
 // an arrary of words for the cpu to chose from
 var cpuGuestWords = [
@@ -27,33 +28,38 @@ var cpuGuestWords = [
 ];
 
 function startGame() {
+  cpuChooseWord()
+  remainingGuesses = 10;
   //printing my variables onto the screen
   document.getElementById("remainingGuesses").textContent = remainingGuesses;
   document.getElementById("lost").textContent = losses;
   document.getElementById("win").textContent = wins;
 
-  //pick random word
-  cpuWordChoice =
-    cpuGuestWords[Math.floor(Math.random() * cpuGuestWords.length)];
-  console.log(cpuWordChoice);
-
   //create underscores for placeholders
-  for (var i = 0; i < cpuWordChoice.length; i++) {
-    answerArrary.push(" __ ");
-    document.getElementById("currentWord").textContent = answerArrary.join(" ");
+
+  function cpuChooseWord() {
+    //pick random word
+    cpuWordChoice =
+      cpuGuestWords[Math.floor(Math.random() * cpuGuestWords.length)];
+    console.log(cpuWordChoice);
+    for (var i = 0; i < cpuWordChoice.length; i++) {
+      answerArrary.push(" __ ");
+      document.getElementById("currentWord").textContent = answerArrary.join(
+        " "
+      );
+    }
   }
 
   //alert if user won or lost
   function winLose() {
     if (winCounter === cpuWordChoice.length) {
       alert("Winner");
-      wins++
+      wins++;
       startGame();
-
     } else if (remainingGuesses === 0) {
       alert("Sorry You Lost");
-      losses++
-      startGame()
+      losses++;
+      startGame();
     }
   }
 
@@ -76,7 +82,9 @@ function startGame() {
       wrongLetter.push(userInput);
       remainingGuesses--;
       winLose();
-      document.getElementById("remainingGuesses").textContent = remainingGuesses;
+      document.getElementById(
+        "remainingGuesses"
+      ).textContent = remainingGuesses;
       //console.log(wrongLetter);
       document.getElementById("lettersUsed").textContent = wrongLetter;
     }
