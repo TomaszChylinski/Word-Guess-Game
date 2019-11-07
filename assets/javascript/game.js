@@ -28,7 +28,7 @@ var cpuGuestWords = [
 ];
 
 function startGame() {
-  cpuChooseWord()
+  cpuChooseWord();
   remainingGuesses = 10;
   //printing my variables onto the screen
   document.getElementById("remainingGuesses").textContent = remainingGuesses;
@@ -50,45 +50,47 @@ function startGame() {
     }
   }
 
+
+  //user guesses
+  
+    document.onkeyup = function(event) {
+      userInput = event.key;
+      //checking if letter exisits in cpuWordChoice word
+      if (cpuWordChoice.indexOf(userInput) > -1) {
+        for (var i = 0; i < cpuWordChoice.length; i++) {
+          //if true than replace underscore with userInput
+          if (cpuWordChoice[i] === userInput) {
+            answerArrary[i] = userInput;
+            winCounter++;
+            winLose();
+            document.getElementById("currentWord").textContent = answerArrary;
+            // console.log("testing if underscore gets replaced " + answerArrary);
+          }
+        }
+      } else {
+        wrongLetter.push(userInput);
+        remainingGuesses--;
+        document.getElementById(
+          "remainingGuesses"
+        ).textContent = remainingGuesses;
+        //console.log(wrongLetter);
+        document.getElementById("lettersUsed").textContent = wrongLetter;
+      }
+    }
+
+
   //alert if user won or lost
-  function winLose() {
-    if (winCounter === cpuWordChoice.length) {
-      alert("Winner");
-      wins++;
-      startGame();
-    } else if (remainingGuesses === 0) {
-      alert("Sorry You Lost");
+  function loser() {
+    if (remainingGuesses === 0) {
       losses++;
-      startGame();
+      document.getElementById("remainingGuesses").textContent = 10;
+      cpuChooseWord();
     }
   }
 
-  //user guesses
-  document.onkeyup = function(event) {
-    userInput = event.key;
-    //checking if letter exisits in cpuWordChoice word
-    if (cpuWordChoice.indexOf(userInput) > -1) {
-      for (var i = 0; i < cpuWordChoice.length; i++) {
-        //if true than replace underscore with userInput
-        if (cpuWordChoice[i] === userInput) {
-          answerArrary[i] = userInput;
-          winCounter++;
-          winLose();
-          document.getElementById("currentWord").textContent = answerArrary;
-          // console.log("testing if underscore gets replaced " + answerArrary);
-        }
-      }
-    } else {
-      wrongLetter.push(userInput);
-      remainingGuesses--;
-      winLose();
-      document.getElementById(
-        "remainingGuesses"
-      ).textContent = remainingGuesses;
-      //console.log(wrongLetter);
-      document.getElementById("lettersUsed").textContent = wrongLetter;
-    }
-  };
-}
+
+
+  }
+
 
 startGame();
