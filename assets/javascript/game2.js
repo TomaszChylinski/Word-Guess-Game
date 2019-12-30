@@ -59,42 +59,49 @@ $(document).ready(function() {
   document.onkeyup = function(event) {
     //var charCode = event.keyCode;
 
-    userInput = event.key;
-    //checking if letter exisits in currentWord word
-    if (currentWord.indexOf(userInput) > -1) {
-      for (var i = 0; i < currentWord.length; i++) {
-        //if true than replace underscore with userInput
-        if (currentWord[i] === userInput) {
-          answerArrary[i] = userInput;
-          document.getElementById("currentWord").textContent = answerArrary;
-          correctLetters++;
-
-          if (correctLetters === answerArrary.length) {
+      userInput = event.key;
+      //checking if letter exisits in currentWord word
+      if (currentWord.indexOf(userInput) > -1) {
+        for (var i = 0; i < currentWord.length; i++) {
+          //if true than replace underscore with userInput
+          if (currentWord[i] === userInput) {
+            answerArrary[i] = userInput;
+            document.getElementById("currentWord").textContent = answerArrary;
+            correctLetters++;
             winner();
+            // console.log("testing if underscore gets replaced " + answerArrary);
           }
-          // console.log("testing if underscore gets replaced " + answerArrary);
         }
-      }
-    } else {
-      incorrectLetter.push(userInput);
-      guessesLeft--;
-      document.getElementById("guessesLeft").textContent = guessesLeft;
-      if (guessesLeft === 0) {
+      } else {
+        incorrectLetter.push(userInput);
+        guessesLeft--;
+        document.getElementById("guessesLeft").textContent = guessesLeft;
         loser();
+        document.getElementById(
+          "incorrectLetter"
+        ).textContent = incorrectLetter;
       }
-      document.getElementById("incorrectLetter").textContent = incorrectLetter;
-    }
+    
   };
 
+
+
+
   function loser() {
-    losses++;
-    document.getElementById("losses").textContent = losses;
-    reset();
+    if (guessesLeft === 0) {
+      losses++;
+      document.getElementById("losses").textContent = losses;
+      reset()
+    }
   }
 
+  
+
   function winner() {
-    wins++;
-    document.getElementById("wins").textContent = wins;
-    reset();
+    if (correctLetters === answerArrary.length) {
+      wins++;
+      document.getElementById("wins").textContent = wins;
+      reset()
+    }
   }
 });
