@@ -58,7 +58,9 @@ $(document).ready(function() {
 
   document.onkeyup = function(event) {
     //var charCode = event.keyCode;
+    var keyPressed = event; 
 
+    if(event.keyCode>64 && event.keyCode<91){
       userInput = event.key;
       //checking if letter exisits in currentWord word
       if (currentWord.indexOf(userInput) > -1) {
@@ -81,7 +83,9 @@ $(document).ready(function() {
           "incorrectLetter"
         ).textContent = incorrectLetter;
       }
-    
+    }else{
+      alert("Sorry, please select a letter")
+    }
   };
 
 
