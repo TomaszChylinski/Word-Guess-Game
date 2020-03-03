@@ -1,6 +1,3 @@
-var guessesLeft = 10;
-var wins = 0;
-var losses = 0;
 var wordBank = [
   "soccer",
   "wonderful",
@@ -16,17 +13,25 @@ var wordBank = [
   "color",
   "game"
 ];
+var guessesLeft = 10;
+var wins = 0;
+var losses = 0;
 var currentWord = "";
 var answerArrary = [];
 var userInput;
 var incorrectLetter = [];
 var correctLetters = 0;
 
-document.getElementById("guessesLeft").textContent = guessesLeft;
-document.getElementById("wins").textContent = wins;
-document.getElementById("losses").textContent = losses;
 
-$(document).ready(function() {
+$(document).ready(function () {
+
+  //Initial Load
+
+  document.getElementById("guessesLeft").textContent = guessesLeft;
+  document.getElementById("wins").textContent = wins;
+  document.getElementById("losses").textContent = losses;
+  //////////////////////////////////////////////////////////////////////
+  
   //pick random word
   currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
   console.log(currentWord);
@@ -35,77 +40,76 @@ $(document).ready(function() {
     answerArrary.push(" __ ");
     document.getElementById("currentWord").textContent = answerArrary.join(" ");
   }
+})
 
-  function reset() {
-    currentWord = "";
-    answerArrary = [];
-    userInput;
-    incorrectLetter = [];
-    guessesLeft = 10;
-    correctLetters = 0;
-    //document.getElementById("guessesLeft").textContent = 10;
 
-    currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-    console.log(currentWord);
+// start of a new game 
+function reset() {
+  currentWord = "";
+  answerArrary = [];
+  userInput = "";
+  incorrectLetter = [];
+  guessesLeft = 10;
+  correctLetters = 0;
+  document.getElementById("guessesLeft").textContent = guessesLeft;
 
-    for (var i = 0; i < currentWord.length; i++) {
-      answerArrary.push(" __ ");
-      document.getElementById("currentWord").textContent = answerArrary.join(
-        " "
-      );
-    }
+  //get new word
+  currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+  console.log(currentWord);
+
+  for (var i = 0; i < currentWord.length; i++) {
+    answerArrary.push(" __ ");
+    document.getElementById("currentWord").textContent = answerArrary.join(
+      " "
+    );
   }
+}
 
-  document.onkeyup = function(event) {
-    //var charCode = event.keyCode;
-    var keyPressed = event; 
 
-    if(event.keyCode>64 && event.keyCode<91){
-      userInput = event.key;
-      //checking if letter exisits in currentWord word
-      if (currentWord.indexOf(userInput) > -1) {
-        for (var i = 0; i < currentWord.length; i++) {
-          //if true than replace underscore with userInput
-          if (currentWord[i] === userInput) {
-            answerArrary[i] = userInput;
-            document.getElementById("currentWord").textContent = answerArrary;
-            correctLetters++;
+document.onkeyup = function (event) {
+
+  // keyCode is just a number 
+  if (event.keyCode > 64 && event.keyCode < 91) {
+    userInput = event.key;
+
+    if (currentWord.indexOf(userInput) > -1) {
+      for (var i = 0; i < currentWord.length; i++) {
+        //if true than replace underscore with userInput
+        if (currentWord[i] === userInput) {
+          answerArrary[i] = userInput;
+          document.getElementById("currentWord").textContent = answerArrary;
+          correctLetters++;
+          console.log("show correct letters", correctLetters)
+          console.log("show  answerArrary", answerArrary.length)
+          if (correctLetters == answerArrary.length) {
             winner();
-            // console.log("testing if underscore gets replaced " + answerArrary);
           }
         }
-      } else {
-        incorrectLetter.push(userInput);
-        guessesLeft--;
-        document.getElementById("guessesLeft").textContent = guessesLeft;
-        loser();
-        document.getElementById(
-          "incorrectLetter"
-        ).textContent = incorrectLetter;
       }
-    }else{
-      alert("Sorry, please select a letter")
+    } else {
+      incorrectLetter.push(userInput);
+      guessesLeft--;
+      document.getElementById("guessesLeft").textContent = guessesLeft;
+      if (guessesLeft == 0) {
+        loser();
+      }
     }
-  };
-
-
-
-
-  function loser() {
-    if (guessesLeft === 0) {
-      losses++;
-      document.getElementById("losses").textContent = losses;
-      reset()
-    }
+  } else {
+    alert("Sorry, please select a letter")
   }
+}
 
-  
 
-  function winner() {
-    if (correctLetters === answerArrary.length) {
-      wins++;
-      document.getElementById("wins").textContent = wins;
-      reset()
-    }
-  }
-});
+function loser() {
+  alert("Sorry You Lost, Try Again!")
+  losses++;
+  document.getElementById("losses").textContent = losses;
+  reset();
+};
+
+function winner() {
+  alert("Congrats You Won! You spelled " + currentWord + " Correctly")
+  wins++;
+  document.getElementById("wins").textContent = wins;
+  reset()
+};
