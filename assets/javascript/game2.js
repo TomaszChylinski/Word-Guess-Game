@@ -90,7 +90,7 @@ document.onkeyup = function (event) {
       incorrectLetter.push(userInput);
       guessesLeft--;
       document.getElementById("guessesLeft").textContent = guessesLeft;
-      if (guessesLeft == 0) {
+      if (guessesLeft == -1) {
         loser();
       }
     }
@@ -101,15 +101,15 @@ document.onkeyup = function (event) {
 
 
 function loser() {
-  alert("Sorry You Lost, Try Again!")
   losses++;
   document.getElementById("losses").textContent = losses;
+  alert("Sorry You Lost, Try Again! The correct word was " + currentWord)
   reset();
 };
 
 function winner() {
-  alert("Congrats You Won! You spelled " + currentWord + " Correctly")
   wins++;
   document.getElementById("wins").textContent = wins;
+  alert("Congrats You Won! You spelled " + currentWord + " Correctly")
   reset()
 };

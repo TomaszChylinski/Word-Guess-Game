@@ -1,55 +1,40 @@
 # Word-Guess-Game
-Game that allows the user to interact and guess the cpu's word
-
-
-
-
-# News-That-Fits-To-Scrape
 
 ### Overview
 
-Using express, mongoose, cheerio, and axios in the background, this application creates a user interface that scrapes https://www.nytimes.com/section/technology. The application pulls up to date information including headlines, summaries, links for the top latest articles nytimes/technology has to offer.
+The Word Guess game allows the user to guess letters from an arrary of words. But be careful, each round the user is only given 10 chances to guess correctly. The game will keep track of each round and tally up user wins and losses. 
+
 
 ### How To Access:
 
  -- Locally
 
-To download the application onto your own machine please use https://github.com/TomaszChylinski/news-thats-fit-to-scrape.git.
+To download the application onto your own machine please use https://github.com/TomaszChylinski/Word-Guess-Game.git
 
-* Once cloned onto your machine, open the terminal of your choice to the following directory news-thats-fit-to-scrape.
-* Run npm install (installs all dependecies)
-* In your mongo terminal create news-that-fit database
-* Run npm start to start the application locally
-* Visit your localhost please keep attention to the port you are using
-
-
-<img src="./public/assets/images/news-that-fits-1.PNG">
+* Once cloned onto your machine, open the terminal of your choice to the following directory Word-Guess-Game
+* Right click on the index.html file and open the file in your favorite browser
 
 -- Online
 
-Please visit www.heroku.com (update link once its up on heroku)
+Please visit https://tomaszchylinski.github.io/Word-Guess-Game/
 
-# How to scrape for new articles
+# How to start
 
-* If starting off from a blank database, the user will see a blank page before they scrape for articles
+* Once the application is running in the browser, the cpu will select a random word from a predetermined set of words. To start the game the user will need press any letter on their keyboard. But be careful the application only accepts letters.
 
+<img src="./public/assets/images/word-guess-game-1.PNG">
 
-<img src="./public/assets/images/news-that-fits-2.PNG">
+# Winners 
 
-* The user may initalize the scrape by clicking on "Get New Articles" found on the top nav
+* If a user is able to guess correct all the letters correctly they will recieve an alert message of the word they guessed. In addition their Wins tally will increase by one.
 
+<img src="./public/assets/images/word-guess-game-2.PNG">
 
+# Losers
 
-<img src="./public/assets/images/news-that-fits-3.PNG">
+* If a user is unable to guess correctly they will recieve an alert message and be notified of the word they couldn't guess. In addition their Losses tally will increase by one.
 
-* Once clicked the magic behind the scenses will kick off. This process might take a few seconds, once complete the user will be taken to the scrape page where upon a succeessful scrape they will be informed. 
-
-
-<img src="./public/assets/images/news-that-fits-4.PNG">
-
-* Now once the user redirects themselves back to http://localhost:3000/ they will now see their updated articles served up on the page. 
-
-<img src="./public/assets/images/news-that-fits-5.PNG">
+<img src="./public/assets/images/word-guess-game-3.PNG">
 
 
-Thank you for viewing my news-that-fits-to-scrape for any question please feel to visit my portfolio <a href="https://tomaszchylinski.github.io/chylinski-tomasz-portfolio/index.html">page</a>
+* Thank you for viewing my news-that-fits-to-scrape for any question please feel to visit my portfolio <a href="https://tomaszchylinski.github.io/chylinski-tomasz-portfolio/index.html">page</a>
