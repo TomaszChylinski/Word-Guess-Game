@@ -22,19 +22,19 @@ Please visit https://tomaszchylinski.github.io/Word-Guess-Game/
 
 * Once the application is running in the browser, the cpu will select a random word from a predetermined set of words. To start the game the user will need press any letter on their keyboard. But be careful the application only accepts letters.
 
-<img src="./public/assets/images/word-guess-game-1.PNG">
+<img src="./assets/images/word-guess-game-1.PNG">
 
 # Winners 
 
 * If a user is able to guess correct all the letters correctly they will recieve an alert message of the word they guessed. In addition their Wins tally will increase by one.
 
-<img src="./public/assets/images/word-guess-game-2.PNG">
+<img src="./assets/images/word-guess-game-2.PNG">
 
 # Losers
 
 * If a user is unable to guess correctly they will recieve an alert message and be notified of the word they couldn't guess. In addition their Losses tally will increase by one.
 
-<img src="./public/assets/images/word-guess-game-3.PNG">
+<img src="./assets/images/word-guess-game-3.PNG">
 
 
 * Thank you for viewing my news-that-fits-to-scrape for any question please feel to visit my portfolio <a href="https://tomaszchylinski.github.io/chylinski-tomasz-portfolio/index.html">page</a>
