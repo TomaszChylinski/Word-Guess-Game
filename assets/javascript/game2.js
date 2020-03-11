@@ -52,6 +52,7 @@ function reset() {
   guessesLeft = 10;
   correctLetters = 0;
   document.getElementById("guessesLeft").textContent = guessesLeft;
+  document.getElementById("incorrectLetter").textContent = incorrectLetter;
 
   //get new word
   currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
