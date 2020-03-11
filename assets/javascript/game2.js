@@ -88,6 +88,7 @@ document.onkeyup = function (event) {
       }
     } else {
       incorrectLetter.push(userInput);
+      document.getElementById("incorrectLetter").textContent = incorrectLetter;
       guessesLeft--;
       document.getElementById("guessesLeft").textContent = guessesLeft;
       if (guessesLeft == -1) {
