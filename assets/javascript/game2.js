@@ -109,7 +109,6 @@ function loser() {
   alert("Sorry You Lost, Try Again! The correct word was " + currentWord)
   reset();
 };
-
 function winner(){
   wins++;
   document.getElementById("wins").textContent = wins;
