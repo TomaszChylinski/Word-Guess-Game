@@ -1,11 +1,10 @@
 var wordBank = [
-  "soccer",
-  "wonderful",
+  "sock",
+  "wine",
   "tinkle",
   "light",
-  "basketball",
-  "finance",
-  "purple",
+  "fifa",
+  "grey",
   "inner",
   "space",
   "moon",
@@ -80,6 +79,8 @@ document.onkeyup = function (event) {
           answerArrary[i] = userInput;
           document.getElementById("currentWord").textContent = answerArrary;
           correctLetters++;
+          guessesLeft--;
+          document.getElementById("guessesLeft").textContent = guessesLeft;
           console.log("show correct letters", correctLetters)
           console.log("show  answerArrary", answerArrary.length)
           if (correctLetters == answerArrary.length) {
@@ -109,7 +110,7 @@ function loser() {
   reset();
 };
 
-function winner() {
+function winner(){
   wins++;
   document.getElementById("wins").textContent = wins;
   alert("Congrats You Won! You spelled " + currentWord + " Correctly")
